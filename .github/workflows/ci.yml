@@ -2,27 +2,26 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out the repository
-        uses: actions/checkout@v2
+    - name: 📥 Clonar el repositorio
+      uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
+    - name: 🟢 Configurar Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
 
-      - name: Install dependencies
-        run: npm install
+    - name: 📦 Instalar dependencias
+      run: npm install
 
-      - name: Run tests
-        run: npm test
+    - name: 🧪 Ejecutar pruebas
+      run: npm test
 
-      - name: Build Docker image
-        run: docker build -t my-web-app .
