@@ -1,0 +1,30 @@
+name: CI/CD Pipeline
+
+on: 
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14' # O la versión que necesites
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund --no-package-lock
+
+      - name: Build
+        run: npm run build
+
+      - name: Validar HTML
+        uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+        with:
+          root: ./ 
+          blacklist: "node_modules"
