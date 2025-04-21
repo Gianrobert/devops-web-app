@@ -4,6 +4,7 @@
   "description": "Aplicación web simple sin base de datos",
   "main": "index.js",
   "scripts": {
+  
     "test": "mocha"
   },
   "dependencies": {
