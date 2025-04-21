@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Aplicación Web DevOps</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #1f2937;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1d4ed8;
+        }
+
+        #greetMessage {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #10b981;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 Aplicación Web con DevOps</h1>
+    <p>Haz clic para saludar desde la API:</p>
+    <button onclick="fetchGreeting()">Saludar</button>
+    <p id="greetMessage"></p>
+
+    <script>
+        function fetchGreeting() {
+            fetch('/api/greet')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('greetMessage').textContent = data.message;
+                })
+                .catch(err => {
+                    document.getElementById('greetMessage').textContent = "Error al obtener el mensaje.";
+                });
+        }
+    </script>
+</body>
+</html>
+

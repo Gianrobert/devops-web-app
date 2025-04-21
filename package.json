@@ -1,0 +1,18 @@
+{
+  "name": "my-web-app",
+  "version": "1.0.0",
+  "description": "Aplicación web simple sin base de datos",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "mocha": "^9.2.2"
+  }
+}
